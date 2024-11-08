@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Flats</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../script.js" defer></script>
+  </head>
+  <body>
+    <!-- Header -->
+
+    <!-- All flats table -->
+    <div class="allFlats">
+      <form>
+        <label for="sortBy">Sort by:</label>
+        <select name="sortBy" id="sortBy">
+          <option value="city">City</option>
+          <option value="price+">Price $ - $$$</option>
+          <option value="price-">Price $$$ - $</option>
+          <option value="areaSize">Area Size</option>
+        </select>
+        <button type="button" id="sortButton" onclick="sort()">Sort</button>
+      </form>
+      <table id="allFlatsTable">
+        <tr>
+          <th>
+            City
+            <select name="cityFilter" id="cityFilter"></select>
+          </th>
+          <th>
+            Street name
+            <select name="stNameFilter" id="stNameFilter"></select>
+          </th>
+          <th>
+            Street number
+            <select name="stNumberFilter" id="stNumberFilter"></select>
+          </th>
+          <th>
+            Area size
+            <select name="areaSizeFilter" id="areaSizeFilter"></select>
+          </th>
+          <th>
+            Has AC
+            <select name="hasACFilter" id="hasACFilter"></select>
+          </th>
+          <th>
+            Year built
+            <select name="yearBuiltFilter" id="yearBuiltFilter"></select>
+          </th>
+          <th>
+            Rent price
+            <select name="rentPriceFilter" id="rentPriceFilter"></select>
+          </th>
+          <th>
+            Date available
+            <select
+              name="dateAvailableFilter"
+              id="dateAvailableFilter"
+            ></select>
+          </th>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
