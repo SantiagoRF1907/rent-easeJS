@@ -1,10 +1,11 @@
 // Define variables
 let users = [];
-let apts = [];
+let flats = [];
 let cities = [];
+const allFlatsTable = document.getElementById("allFlatsTable");
 
 // Apartment class
-class Apt {
+class Flat {
   constructor(
     city,
     stName,
@@ -32,17 +33,17 @@ class Apt {
     return JSON.stringify(this);
   }
 
-  static toObj(aptJSONString) {
-    let aptObj = JSON.parse(aptJSONString);
-    return new Apt(
-      aptObj.city,
-      aptObj.stName,
-      aptObj.stNumber,
-      aptObj.areaSize,
-      aptObj.hasAC,
-      aptObj.yearBuilt,
-      aptObj.rentPrice,
-      aptObj.dateAvailable
+  static toObj(flatJSONString) {
+    let flatObj = JSON.parse(flatJSONString);
+    return new Flat(
+      flatObj.city,
+      flatObj.stName,
+      flatObj.stNumber,
+      flatObj.areaSize,
+      flatObj.hasAC,
+      flatObj.yearBuilt,
+      flatObj.rentPrice,
+      flatObj.dateAvailable
     );
   }
 }
@@ -77,29 +78,8 @@ class User {
   }
 }
 
-// Functions
-
-function sortTableBy() {
-  const sortBy = document.getElementById("sortBy");
-  const sortOption = sortBy.value;
-
-  if (sortOption === "price+") {
-    apts.sort((a, b) => a.rentPrice - b.rentPrice);
-  } else if (sortOption === "price-") {
-    apts.sort((a, b) => b.rentPrice - a.rentPrice);
-  } else if (sortOption === "areaSize") {
-    apts.sort((a, b) => a.areaSize - b.areaSize);
-  } else {
-    apts.sort((a, b) => {
-      if (a.city < b.city) return -1;
-      else if (a.city > b.city) return 1;
-      else return 0;
-    });
-  }
-}
-
-// Apartment instance
-const apt1 = new Apt(
+// Flat instance
+const flat1 = new Flat(
   "Vancouver",
   "Kootenay St",
   444,
@@ -109,7 +89,7 @@ const apt1 = new Apt(
   2200,
   "2024-11-07"
 );
-const apt2 = new Apt(
+const flat2 = new Flat(
   "Calgary",
   "Poopy Rd",
   123,
@@ -119,30 +99,58 @@ const apt2 = new Apt(
   2000,
   "2024-07-07"
 );
-
-apts.push(apt1, apt2);
-console.log(apts);
-
-console.log(apt1["city"]);
+flats.push(flat1, flat2);
 
 // Display all flats table
-const allFlatsTable = document.getElementById("allFlatsTable");
-apts.forEach((apt) => {
-  const row = document.createElement("tr");
-  const fields = [
-    "city",
-    "stName",
-    "stNumber",
-    "areaSize",
-    "hasAC",
-    "yearBuilt",
-    "rentPrice",
-    "dateAvailable",
-  ];
-  fields.forEach((field) => {
-    const cell = document.createElement("td");
-    cell.innerHTML = apt[field] !== undefined ? apt[field] : "";
-    row.appendChild(cell);
+function displayAllFlatsTable() {
+  const flatRows = document.querySelectorAll(".flatRow");
+  flatRows.forEach((flatRow) => flatRow.remove());
+  flats.forEach((flat) => {
+    const row = document.createElement("tr");
+    row.className = "flatRow";
+    const fields = [
+      "city",
+      "stName",
+      "stNumber",
+      "areaSize",
+      "hasAC",
+      "yearBuilt",
+      "rentPrice",
+      "dateAvailable",
+    ];
+    fields.forEach((field) => {
+      const cell = document.createElement("td");
+      cell.innerHTML = flat[field] !== undefined ? flat[field] : "";
+      row.appendChild(cell);
+    });
+    allFlatsTable.appendChild(row);
   });
-  allFlatsTable.appendChild(row);
-});
+}
+displayAllFlatsTable();
+
+// Handle sort button
+function sortTableBy() {
+  const sortSelect = document.getElementById("sortBy");
+  const sortOption = sortSelect.value;
+  console.log(sortOption);
+
+  if (sortOption === "price+") {
+    flats.sort((a, b) => a.rentPrice - b.rentPrice);
+  } else if (sortOption === "price-") {
+    flats.sort((a, b) => b.rentPrice - a.rentPrice);
+  } else if (sortOption === "areaSize+") {
+    flats.sort((a, b) => a.areaSize - b.areaSize);
+  } else if (sortOption === "areaSize-") {
+    flats.sort((a, b) => b.areaSize - a.areaSize);
+  } else {
+    flats.sort((a, b) => {
+      if (a.city < b.city) return -1;
+      else if (a.city > b.city) return 1;
+      else return 0;
+    });
+  }
+  displayAllFlatsTable();
+}
+
+// Handle filter select
+// function filterBy() {}
