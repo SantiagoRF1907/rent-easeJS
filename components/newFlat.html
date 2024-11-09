@@ -28,5 +28,56 @@
         </ul>
       </nav>
     </div>
+
+    <!-- New flat form -->
+    <div class="newFlat">
+      <form id="newFlatForm">
+        <h1>New Flat</h1>
+        <!-- City -->
+        <div>
+          <label for="city">City</label>
+          <select name="citySelect" id="citySelect">
+            <option value="vancouver">Vancouver</option>
+            <option value="north-vancouver">North Vancouver</option>
+            <option value="burnaby">Burnaby</option>
+            <option value="richmond">Richmond</option>
+            <option value="surrey">Surrey</option>
+          </select>
+        </div>
+        <!-- St name -->
+        <div><label for="stName">Street Name</label> <input type="text" /></div>
+        <!-- St number -->
+        <div>
+          <label for="stNumber">Street Number</label> <input type="number" />
+        </div>
+        <!-- Area size -->
+        <div>
+          <label for="areaSize">Area Size</label>
+          <input type="number" /> m&sup2;
+        </div>
+        <!-- Has AC -->
+        <div>
+          <label for="hasAC">Has AC</label>
+          <select name="hasACSelect" id="hasACSelect">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+        <!-- Year built -->
+        <div>
+          <label for="yaerBuilt">Year Built</label>
+          <select name="yearBuiltSelect" id="yearBuiltSelect"></select>
+        </div>
+        <!-- Rent price -->
+        <div>
+          <label for="rentPrice">Rent Price</label> <input type="number" />
+        </div>
+        <!-- Date available -->
+        <div>
+          <label for="dateAvailable">Date Available</label>
+          <input type="date" />
+        </div>
+      </form>
+    </div>
   </body>
 </html>

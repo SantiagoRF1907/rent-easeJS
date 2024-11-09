@@ -21,17 +21,17 @@ body {
 }
 
 #logo {
-  height: 55px;
-  margin: 0;
-  padding-left: 10px;
+  height: 65px;
+  margin-left: 20px;
+  padding: 0;
 }
 
 #welcomeMessage {
   color: #335766;
   font-weight: 525;
-  line-height: 50px;
+  line-height: 65px;
   font-size: 18px;
-  padding: 0 5px;
+  padding: 0;
 }
 
 nav ul {
@@ -44,8 +44,8 @@ nav ul li a,
 .logout {
   text-decoration: none;
   color: #1cc5c5;
-  font-weight: 525;
-  line-height: 50px;
+  font-weight: 550;
+  line-height: 65px;
   font-size: 16px;
   border-left: 1px solid #8ca4a4;
   padding: 0 5px;
@@ -53,14 +53,18 @@ nav ul li a,
 
 .logOut {
   all: unset;
-  margin-right: 30px;
+  margin-right: 20px;
   background-color: #ecfbf6;
   color: #1cc5c5;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .logOut:hover {
   cursor: pointer;
+}
+.logOut:active {
+  background-color: #ecfbf6;
 }
 
 .allFlats {
@@ -77,10 +81,12 @@ nav ul li a,
   margin-left: 15px;
 }
 
-form select {
+form select,
+form input {
   font-size: unset;
   padding: 4px;
   border-radius: 12px;
+  background-color: whitesmoke;
 }
 
 button {
@@ -102,7 +108,7 @@ button:active {
 }
 
 table {
-  min-width: 1200px;
+  min-width: 1000px;
   margin: 10px;
   background-color: white;
   border: 1px solid grey;
@@ -114,4 +120,30 @@ th {
   text-align: left;
   padding: 8px;
   font-size: 14px;
+}
+
+.newFlat {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.newFlat form {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  background-color: white;
+  border: 1px solid #365c6b;
+  border-radius: 20px;
+  padding: 50px;
+}
+
+.newFlat h1 {
+  text-align: center;
+}
+
+.newFlat div {
+  margin: 15px 30px;
 }
