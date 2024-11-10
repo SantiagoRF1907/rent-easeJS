@@ -31,12 +31,12 @@
 
     <!-- New flat form -->
     <div class="newFlat">
-      <form id="newFlatForm">
+      <form id="newFlatForm" onsubmit="postFlat()">
         <h1>New Flat</h1>
         <!-- City -->
         <div>
           <label for="city">City</label>
-          <select name="citySelect" id="citySelect">
+          <select name="citySelect" id="citySelect" required>
             <option value="vancouver">Vancouver</option>
             <option value="north-vancouver">North Vancouver</option>
             <option value="burnaby">Burnaby</option>
@@ -45,20 +45,24 @@
           </select>
         </div>
         <!-- St name -->
-        <div><label for="stName">Street Name</label> <input type="text" /></div>
+        <div>
+          <label for="stName">Street Name</label>
+          <input type="text" name="stName" id="stName" required />
+        </div>
         <!-- St number -->
         <div>
-          <label for="stNumber">Street Number</label> <input type="number" />
+          <label for="stNumber">Street Number</label>
+          <input type="number" name="stNumber" id="stNumber" />
         </div>
         <!-- Area size -->
         <div>
           <label for="areaSize">Area Size</label>
-          <input type="number" /> m&sup2;
+          <input type="number" name="areaSize" id="areaSize" required /> m&sup2;
         </div>
         <!-- Has AC -->
         <div>
           <label for="hasAC">Has AC</label>
-          <select name="hasACSelect" id="hasACSelect">
+          <select name="hasACSelect" id="hasACSelect" required>
             <option value="yes">Yes</option>
             <option value="no">No</option>
           </select>
@@ -66,16 +70,21 @@
         <!-- Year built -->
         <div>
           <label for="yaerBuilt">Year Built</label>
-          <select name="yearBuiltSelect" id="yearBuiltSelect"></select>
+          <input type="number" name="yaerBuilt" id="yearBuilt" required />
         </div>
         <!-- Rent price -->
         <div>
-          <label for="rentPrice">Rent Price</label> <input type="number" />
+          <label for="rentPrice">Rent Price</label>
+          <input type="number" name="rentPrice" id="rentPrice" required />
         </div>
         <!-- Date available -->
         <div>
           <label for="dateAvailable">Date Available</label>
-          <input type="date" />
+          <input type="date" name="dateAvailable" id="dateAvailable" required />
+        </div>
+        <!-- Submit button -->
+        <div>
+          <button type="submit">Post Flat</button>
         </div>
       </form>
     </div>

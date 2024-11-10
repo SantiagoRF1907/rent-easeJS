@@ -1,8 +1,38 @@
-// Define variables
-let users = [];
-let flats = [];
-let cities = [];
-const allFlatsTable = document.getElementById("allFlatsTable");
+// Set local storage
+function setItem(key) {
+  localStorage.setItem(key, JSON.stringify([]));
+  return [];
+}
+let users = setItem("users");
+let flats = setItem("flats");
+
+function addFlat(flat) {
+  let flats = JSON.parse(localStorage.getItem("flats"));
+  flats.push(flat);
+  localStorage.setItem("flats", JSON.stringify(flats));
+  return flats;
+}
+
+function removeFlat(flat) {
+  let flats = JSON.parse(localStorage.getItem("flats"));
+  flats = flats.filter((f) => f != flat);
+  localStorage.setItem("flats", JSON.stringify(flats));
+  return flats;
+}
+
+function addUser(user) {
+  let users = JSON.parse(localStorage.getItem("users"));
+  users.push(user);
+  localStorage.setItem("users", JSON.stringify(users));
+  return users;
+}
+
+function removeUser(user) {
+  let users = JSON.parse(localStorage.getItem("users"));
+  users = users.filter((f) => f != user);
+  localStorage.setItem("users", JSON.stringify(users));
+  return users;
+}
 
 // Apartment class
 class Flat {
@@ -78,34 +108,18 @@ class User {
   }
 }
 
-// Flat instance
-const flat1 = new Flat(
-  "Vancouver",
-  "Kootenay St",
-  444,
-  200,
-  true,
-  2023,
-  2200,
-  "2024-11-07"
-);
-const flat2 = new Flat(
-  "Calgary",
-  "Poopy Rd",
-  123,
-  420,
-  false,
-  2010,
-  2000,
-  "2024-07-07"
-);
-flats.push(flat1, flat2);
-
+// All Flats Page
 // Display all flats table
 function displayAllFlatsTable() {
+  // Get table element
+  const allFlatsTable = document.getElementById("allFlatsTable");
+  // Clear table
   const flatRows = document.querySelectorAll(".flatRow");
   flatRows.forEach((flatRow) => flatRow.remove());
-  flats.forEach((flat) => {
+
+  // Add a row for each flat in flats array
+  flats.forEach((f) => {
+    flat = Flat.toObj(f);
     const row = document.createElement("tr");
     row.className = "flatRow";
     const fields = [
@@ -126,7 +140,7 @@ function displayAllFlatsTable() {
     allFlatsTable.appendChild(row);
   });
 }
-displayAllFlatsTable();
+// displayAllFlatsTable();
 
 // Handle sort button
 function sortTableBy() {
@@ -154,3 +168,32 @@ function sortTableBy() {
 
 // Handle filter select
 // function filterBy() {}
+
+// New Flat Page
+
+// Define newFlatForm & Prevent form from submitting automatically
+const newFlatForm = document.getElementById("newFlatForm");
+newFlatForm.addEventListener("submit", (e) => e.preventDefault());
+
+// Post Flat
+function postFlat() {
+  // Obtain form input
+  const city = document.getElementById("citySelect").value;
+  const stName = document.getElementById("stName").value;
+  const stNumber = document.getElementById("stNumber").value;
+  const areaSize = document.getElementById("areaSize").value;
+  const hasAC = document.getElementById("hasACSelect").value;
+  const yearBuilt = document.getElementById("yearBuilt").value;
+  const rentPrice = document.getElementById("rentPrice").value;
+  const dateAvailable = document.getElementById("dateAvailable").value;
+
+  // Create new Flat instance in JSONString format & Save new flat in local storage
+  newFlatJSON = `{"city":"${city}","stName":"${stName}","stNumber":"${stNumber}","areaSize":"${areaSize}","hasAC":"${hasAC}","yearBuilt":"${yearBuilt}","rentPrice":"${rentPrice}","dateAvailable":"${dateAvailable}",}`;
+  flats = addFlat(newFlatJSON);
+
+  alert("New Flat Post Succesful!");
+}
+
+// Poopoo caca
+
+console.log(flats);
