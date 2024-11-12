@@ -4,24 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>New Flat</title>
-    <link rel="stylesheet" href="../style.css" />
-    <script src="../script.js" defer></script>
+    <link rel="stylesheet" href="../../style.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
     <!-- Header -->
     <div class="header">
       <div class="logo">
         <a href="home.html" class="logo"
-          ><img src="/img/logo.png" alt="logo" id="logo"
+          ><img src="../../img/logo.png" alt="logo" id="logo"
         /></a>
       </div>
       <p><i id="welcomeMessage">Welcome Back, Santi</i></p>
       <nav>
         <ul>
-          <li><a href="home.html">HOME</a></li>
-          <li><a href="allFlats.html">ALL FLATS</a></li>
-          <li><a href="newFlat.html">NEW FLAT</a></li>
-          <li><a href="profileUpdt.html">PROFILE</a></li>
+          <li><a href="../home/home.html">HOME</a></li>
+          <li><a href="../allFlats/allFlats.html">ALL FLATS</a></li>
+          <li><a href="../newFlat/newFlat.html">NEW FLAT</a></li>
+          <li><a href="../profileUpdt/profileUpdt.html">PROFILE</a></li>
           <button type="button" onclick="logOut()" class="logOut">
             LOGOUT
           </button>
@@ -37,11 +37,11 @@
         <div>
           <label for="city">City</label>
           <select name="citySelect" id="citySelect" required>
-            <option value="vancouver">Vancouver</option>
-            <option value="north-vancouver">North Vancouver</option>
-            <option value="burnaby">Burnaby</option>
-            <option value="richmond">Richmond</option>
-            <option value="surrey">Surrey</option>
+            <option value="Vancouver">Vancouver</option>
+            <option value="North-Vancouver">North Vancouver</option>
+            <option value="Burnaby">Burnaby</option>
+            <option value="Richmond">Richmond</option>
+            <option value="Surrey">Surrey</option>
           </select>
         </div>
         <!-- St name -->
@@ -57,7 +57,8 @@
         <!-- Area size -->
         <div>
           <label for="areaSize">Area Size</label>
-          <input type="number" name="areaSize" id="areaSize" required /> m&sup2;
+          <input type="number" name="areaSize" id="areaSize" required />
+          Sq. Ft.
         </div>
         <!-- Has AC -->
         <div>
@@ -70,7 +71,14 @@
         <!-- Year built -->
         <div>
           <label for="yaerBuilt">Year Built</label>
-          <input type="number" name="yaerBuilt" id="yearBuilt" required />
+          <input
+            type="number"
+            name="yaerBuilt"
+            id="yearBuilt"
+            min="1900"
+            max="2025"
+            required
+          />
         </div>
         <!-- Rent price -->
         <div>
